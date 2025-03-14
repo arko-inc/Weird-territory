@@ -1,8 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
-import AdminPage from "./pages/AdminPage";
-import BlogPage from "./pages/BlogPage";
+import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 
 function App() {
@@ -10,9 +9,7 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/admin" element={<AdminPage />} />
-        <Route path="/blog/:id" element={<BlogPage />} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </Router>
   );
