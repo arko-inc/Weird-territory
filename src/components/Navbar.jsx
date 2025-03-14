@@ -1,20 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { TextField, InputAdornment } from "@mui/material";
-import { Search } from "lucide-react";
-import { Link } from "react-router-dom";
-
-const blogs = [
-    { id: 1, title: "Quantum Mechanics Explained", description: "Understanding wave-particle duality.", img: "/images/quantum.jpg", content: "Quantum mechanics is the study of..." },
-    { id: 2, title: "Mars Colonization", description: "How we can settle on Mars.", img: "/images/mars.jpg", content: "Mars is the next frontier for human exploration..." },
-    { id: 3, title: "Black Holes", description: "What happens beyond the event horizon?", img: "/images/blackhole.jpg", content: "Black holes are regions of spacetime where gravity is so strong..." },
-    { id: 4, title: "AI in Space Exploration", description: "How AI is changing space missions.", img: "/images/ai.jpg", content: "Artificial intelligence plays a huge role in..." },
-    { id: 5, title: "The Future of Space Telescopes", description: "Next-gen observatories.", img: "/images/telescope.jpg", content: "The James Webb Space Telescope is just the beginning..." }
-];
+import { Search, X } from "lucide-react"; // Importing icons from Lucide-react
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [filteredBlogs, setFilteredBlogs] = useState([]);
+    const [blogs, setBlogs] = useState([]);
+    const searchRef = useRef(null);
+    const navigate = useNavigate(); // We need this for programmatic navigation
+
+    // Fetch blogs from Blog.json
+    useEffect(() => {
+        fetch("/Blog.json")
+            .then(response => response.json())
+            .then(data => setBlogs(data))
+            .catch(error => console.error("Error fetching blogs:", error));
+    }, []);
 
     const handleSearch = (e) => {
         const term = e.target.value;
@@ -29,6 +32,37 @@ const Navbar = () => {
         }
     };
 
+    // Close search results when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (searchRef.current && !searchRef.current.contains(event.target)) {
+                setFilteredBlogs([]); // Hide search results
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
+    // Handle "Enter" key press
+    const handleKeyPress = (e) => {
+        if (e.key === "Enter") {
+            if (filteredBlogs.length === 1) {
+                // If only one blog matches the search term, navigate to its page directly
+                navigate(filteredBlogs[0].pageLink);
+            } else if (filteredBlogs.length > 1) {
+                // If multiple results, navigate to the filter page with the search term as a query
+                navigate(`/filter?query=${searchTerm}`);
+            }
+        }
+    };
+
+    const clearSearch = () => {
+        setSearchTerm("");
+        setFilteredBlogs([]);
+    };
+
     return (
         <motion.nav className="bg-gray-900 text-white px-6 py-4 flex items-center justify-between shadow-lg"
             initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
@@ -37,30 +71,51 @@ const Navbar = () => {
             <Link to="/" className="text-2xl font-bold">Weird Territory</Link>
 
             {/* Search Bar */}
-            <div className="relative">
+            <div ref={searchRef} className="relative w-72">
                 <TextField
                     variant="outlined"
                     size="small"
+                    fullWidth
                     className="bg-gray-800 text-white rounded-lg"
-                    placeholder="Search..."
+                    placeholder="Search blogs..."
                     value={searchTerm}
                     onChange={handleSearch}
+                    onKeyDown={handleKeyPress} // Handling "Enter" key press
                     InputProps={{
                         startAdornment: (
                             <InputAdornment position="start">
                                 <Search className="text-gray-400" />
                             </InputAdornment>
                         ),
+                        endAdornment: (
+                            searchTerm && (
+                                <InputAdornment position="end">
+                                    <X 
+                                        className="text-gray-400 cursor-pointer" 
+                                        onClick={clearSearch} // Clear search when clicked
+                                    />
+                                </InputAdornment>
+                            )
+                        ),
                         style: { color: 'white' }
                     }}
                 />
                 
-                {/* Search Results */}
+                {/* Search Results Dropdown */}
                 {filteredBlogs.length > 0 && (
-                    <motion.div className="absolute w-full bg-gray-800 text-white shadow-lg mt-1 rounded-lg p-2 max-h-60 overflow-y-auto"
-                        initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
+                    <motion.div 
+                        className="absolute w-full bg-gray-800 text-white shadow-lg mt-1 rounded-lg p-2 max-h-60 overflow-y-auto z-50"
+                        initial={{ opacity: 0, y: 5 }} 
+                        animate={{ opacity: 1, y: 0 }} 
+                        transition={{ duration: 0.3 }}
+                    >
                         {filteredBlogs.map((blog) => (
-                            <Link to={`/blog/${blog.id}`} key={blog.id} className="flex items-center gap-3 p-2 hover:bg-gray-700 rounded-lg">
+                            <Link 
+                                to={blog.pageLink} // 🔥 Now it navigates using pageLink instead of ID
+                                key={blog.id} 
+                                className="flex items-center gap-3 p-2 hover:bg-gray-700 rounded-lg"
+                                onClick={() => setFilteredBlogs([])} // Hide dropdown on click
+                            >
                                 <img src={blog.img} alt={blog.title} className="w-12 h-12 object-cover rounded-lg" />
                                 <div>
                                     <p className="font-semibold">{blog.title}</p>
@@ -81,4 +136,5 @@ const Navbar = () => {
         </motion.nav>
     );
 }
+
 export default Navbar;

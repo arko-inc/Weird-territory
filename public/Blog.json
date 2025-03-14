@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "title": "Quantum Mechanics Explained",
+        "description": "Understanding wave-particle duality.",
+        "img": "https://images.unsplash.com/photo-1617839625591-e5a789593135?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fA%3D%3D",
+        "pageLink": "/blogs/quantum-mechanics",
+        "priority": 75.5,
+        "carouselState": true,
+        "topic": "Physics"
+    },
+    {
+        "id": 2,
+        "title": "Mars Colonization",
+        "description": "How we can settle on Mars.",
+        "img": "https://images.unsplash.com/photo-1612892483236-52d32a0e0ac1?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fA%3D%3D",
+        "pageLink": "/blogs/mars-colonization",
+        "priority": 85.2,
+        "carouselState": false,
+        "topic": "Space"
+    },
+    {
+        "id": 3,
+        "title": "Black Holes",
+        "description": "What happens beyond the event horizon?",
+        "img": "https://science.nasa.gov/wp-content/uploads/2023/06/blackhole.jpg",
+        "pageLink": "/blogs/black-holes",
+        "priority": 95.0,
+        "carouselState": true,
+        "topic": "Astronomy"
+    }
+]
