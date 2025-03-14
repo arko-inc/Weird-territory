@@ -4,7 +4,7 @@ import LandingPage from '../pages/Landingpage'
 const Home = () => {
   return (
     <>
-    <LandingPage/>
+    {/* <LandingPage/> */}
     </>
   )
 }
