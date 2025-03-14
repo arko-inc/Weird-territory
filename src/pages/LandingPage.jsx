@@ -11,8 +11,7 @@ const blogs = [
     { id: 4, title: "AI in Space Exploration", description: "How AI is changing space missions.", img: "/images/ai.jpg" },
     { id: 5, title: "The Future of Space Telescopes", description: "Next-gen observatories.", img: "/images/telescope.jpg" }
 ];
-
-export default function LandingPage() {
+const LandingPage = () =>{
     const carouselSettings = {
         dots: true,
         infinite: true,
@@ -76,3 +75,4 @@ export default function LandingPage() {
         </div>
     );
 }
+export default LandingPage;

@@ -25,7 +25,7 @@ const blog = {
   ]
 };
 
-export default function BlogPage() {
+const BlogPage = () => {
   return (
     <div className="bg-gray-900 text-white min-h-screen">
       {/* Header Section */}
@@ -89,3 +89,5 @@ export default function BlogPage() {
     </div>
   );
 }
+
+export default BlogPage;

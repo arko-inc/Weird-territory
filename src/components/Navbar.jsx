@@ -12,7 +12,7 @@ const blogs = [
     { id: 5, title: "The Future of Space Telescopes", description: "Next-gen observatories.", img: "/images/telescope.jpg", content: "The James Webb Space Telescope is just the beginning..." }
 ];
 
-export default function Navbar() {
+const Navbar = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [filteredBlogs, setFilteredBlogs] = useState([]);
 
@@ -34,7 +34,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             
             {/* Logo */}
-            <Link to="/" className="text-2xl font-bold">🔬 Science Blog</Link>
+            <Link to="/" className="text-2xl font-bold">Weird Territory</Link>
 
             {/* Search Bar */}
             <div className="relative">
@@ -81,3 +81,4 @@ export default function Navbar() {
         </motion.nav>
     );
 }
+export default Navbar;
