@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Carousel from "./Carousel";
-import Sidebar from "./SideBar";
+import SideBar from "./SideBar";
 const Landing = () => {
     const [blogs, setBlogs] = useState([]);
     const [filteredBlogs, setFilteredBlogs] = useState([]);
@@ -38,7 +38,7 @@ const Landing = () => {
     return (
         <div className="p-6 bg-gray-900 text-white min-h-screen flex">
             {/* Sidebar */}
-            <Sidebar onSelectTopic={handleSelectTopic} selectedTopic={selectedTopic} />
+            <SideBar onSelectTopic={handleSelectTopic} selectedTopic={selectedTopic} />
 
             <div className="flex-1 ml-6">
                 <h1 className="text-3xl font-bold mb-6">Latest Blogs</h1>

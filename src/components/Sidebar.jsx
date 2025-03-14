@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const Sidebar = ({ onSelectTopic, selectedTopic }) => {
+const SideBar = ({ onSelectTopic, selectedTopic }) => {
     const [topics, setTopics] = useState([]);
 
     useEffect(() => {
@@ -38,4 +38,4 @@ const Sidebar = ({ onSelectTopic, selectedTopic }) => {
     );
 };
 
-export default Sidebar;
+export default SideBar;
