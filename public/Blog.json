@@ -8,7 +8,8 @@
         "pageLink": "/blogs/quantum-mechanics",
         "priority": 75.5,
         "carouselState": true,
-        "topic": "Physics"
+        "topic": "Physics",
+        "Top": 8.5
     },
     {
         "id": 2,
@@ -19,18 +20,20 @@
         "pageLink": "/blogs/mars-colonization",
         "priority": 85.2,
         "carouselState": true,
-        "topic": "Space"
+        "topic": "Space",
+        "Top": 9.2
     },
     {
         "id": 3,
         "title": "Black Holes",
         "description": "What happens beyond the event horizon?",
         "passage": "What happens beyond the event horizon?",
-        "img": "https://science.nasa.gov/wp-content/uploads/2023/06/blackhole.jpg",
+        "img": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/b/blackhole_1600.jpg?w=1600&h=932&fit=clip&crop=faces%2Cfocalpoint",
         "pageLink": "/blogs/black-holes",
         "priority": 95.0,
-        "carouselState": false,
-        "topic": "Astronomy"
+        "carouselState": true,
+        "topic": "Astronomy",
+        "Top": 9.8
     },
     {
         "id": 4,
@@ -41,7 +44,8 @@
         "pageLink": "/blogs/mars-colonization",
         "priority": 85.2,
         "carouselState": false,
-        "topic": "Space"
+        "topic": "Space",
+        "Top": 8.7
     },
     {
         "id": 5,
@@ -52,7 +56,8 @@
         "pageLink": "/blogs/mars-colonization",
         "priority": 85.2,
         "carouselState": false,
-        "topic": "Space"
+        "topic": "Space",
+        "Top": 8.9
     },
     {
         "id": 6,
@@ -63,7 +68,8 @@
         "pageLink": "/blogs/mars-colonization",
         "priority": 85.2,
         "carouselState": false,
-        "topic": "Space"
+        "topic": "Space",
+        "Top": 8.6
     },
     {
         "id": 7,
@@ -74,6 +80,7 @@
         "pageLink": "/blogs/mars-colonization",
         "priority": 85.2,
         "carouselState": false,
-        "topic": "Space"
+        "topic": "Space",
+        "Top": 8.4
     }
 ]

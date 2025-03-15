@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Carousel from "../components/Carousel";
 import Sidebar from "../components/Sidebar";
+import RightSidebar from "../components/Rightsidebar";
+import Story from "../components/Story";
 
 const Landing = () => {
     const [blogs, setBlogs] = useState([]);
@@ -35,11 +37,18 @@ const Landing = () => {
 
     return (
         <div className="p-6 bg-black text-white min-h-screen">
-            {/* Main Container: Carousel on Left, Sidebar on Right */}
-            <div className="flex flex-col md:flex-row gap-6">
-                {/* Main Content (Carousel + Blogs) */}
-                <div className="flex-1">
-                    <h1 className="text-7xl font-thin mb-6">Latest Blogs</h1>
+            {/* Three-column layout */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+                
+                {/* Left Column: Sidebar */}
+                <div className="md:col-span-2">
+                   
+                    <RightSidebar />
+                </div>
+
+                {/* Middle Column: Carousel + Blogs */}
+                <div className="md:col-span-8">
+                    <h1 className="text-7xl font-thin mb-6 text-blue-400">Latest Blogs</h1>
 
                     {/* Carousel Section */}
                     <motion.div
@@ -48,11 +57,11 @@ const Landing = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6 }}
                     >
-                        <Carousel />
+                        <Story/>
                     </motion.div>
 
                     {/* Blog Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
                         {filteredBlogs.map((blog) => (
                             <motion.div
                                 key={blog.id}
@@ -70,9 +79,9 @@ const Landing = () => {
                     </div>
                 </div>
 
-                {/* Sidebar (Now on the Right) */}
-                <div className="w-64">
-                    <Sidebar onSelectTopic={handleSelectTopic} selectedTopic={selectedTopic} />
+                {/* Right Column: RightSidebar */}
+                <div className="md:col-span-2">
+                <Sidebar onSelectTopic={handleSelectTopic} selectedTopic={selectedTopic} />
                 </div>
             </div>
         </div>

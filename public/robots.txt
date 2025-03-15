@@ -1,1 +1,4 @@
-Sitemap: https://www.yourwebsite.com/sitemap.xml
+User-agent: *
+Disallow: /admin
+Allow: /
+Sitemap: https://weird-territory.vercel.app/sitemap.xml

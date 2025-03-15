@@ -15,11 +15,11 @@ const Sidebar = ({ onSelectTopic, selectedTopic }) => {
     }, []);
 
     return (
-        <div className="bg-gray-900 p-4 rounded-lg shadow-lg w-60 fixed">
+        <div className="bg-gray-900 p-4 rounded-lg shadow-lg w-60 fixed font-thin">
             {/* Sidebar Header */}
             <div className="flex items-center gap-2 mb-3">
                 <Filter size={20} className="text-rose-500" />
-                <h2 className="text-lg font-bold text-white">Filter by Topic</h2>
+                <h2 className="text-2xl font-thin text-white">Filter by Topic</h2>
             </div>
 
             <ul>
