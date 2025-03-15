@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import BlogCard from "./BlogCard"; // Import your BlogCard component
 import Sidebar from "./Sidebar"; // Import Sidebar component
 
-const Showcase = () => {
+const Allblogs = () => {
     const [blogs, setBlogs] = useState([]);
     const [filteredBlogs, setFilteredBlogs] = useState([]);
     const [selectedTopic, setSelectedTopic] = useState(null);
@@ -46,4 +46,4 @@ const Showcase = () => {
     );
 };
 
-export default Showcase;
+export default Allblogs;

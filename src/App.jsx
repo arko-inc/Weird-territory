@@ -8,7 +8,7 @@ import MarsColonization from "./pages/blogs/MarsColonization";
 import BlackHoles from "./pages/blogs/BlackHoles";
 import Filter from "./components/Filter";
 import BlogPage from "./pages/BlogPage";
-import Showcase from "./components/ShowCase";
+import Allblogs from "./components/Allblogs";
 
 function App() {
   return (
@@ -18,8 +18,8 @@ function App() {
         {/* All pages will have Navbar now */}
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          
-          <Route path="blogs" element={<Showcase />} />
+
+          <Route path="blogs" element={<Allblogs />} />
           <Route path="filter" element={<Filter />} />
           <Route path="blogs/:pageLink" element={<BlogPage />} />
           <Route path="blogs/quantum-mechanics" element={<QuantumMechanics />} />
