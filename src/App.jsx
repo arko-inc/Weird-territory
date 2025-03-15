@@ -18,6 +18,7 @@ function App() {
         {/* All pages will have Navbar now */}
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          
           <Route path="blogs" element={<Showcase />} />
           <Route path="filter" element={<Filter />} />
           <Route path="blogs/:pageLink" element={<BlogPage />} />
