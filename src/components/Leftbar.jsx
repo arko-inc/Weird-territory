@@ -33,7 +33,7 @@ const Leftbar = () => {
     }
 
     return (
-        <div className='fixed w-2/12'>
+        <div className=' w-2/12'>
             <h1 className='text-3xl pb-10 text-emerald-400 font-thin'><span className='text-7xl'>Top</span><br /> Blogs for you</h1>
             {topBlogs.map(blog => (
                 <div key={blog.id} style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
