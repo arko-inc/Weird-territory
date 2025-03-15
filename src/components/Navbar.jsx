@@ -24,7 +24,10 @@ const Navbar = () => {
         setSearchTerm(term);
         if (term.length > 0) {
             const results = blogs
-                .filter(blog => blog.title.toLowerCase().includes(term.toLowerCase()) || blog.description.toLowerCase().includes(term.toLowerCase()))
+                .filter(blog => 
+                    blog.title.toLowerCase().includes(term.toLowerCase()) || 
+                    (blog.passage?.toLowerCase() || "").includes(term.toLowerCase())
+                )
                 .slice(0, 5);
             setFilteredBlogs(results);
         } else {
@@ -49,10 +52,8 @@ const Navbar = () => {
     const handleKeyPress = (e) => {
         if (e.key === "Enter") {
             if (filteredBlogs.length === 1) {
-                // If only one blog matches the search term, navigate to its page directly
                 navigate(filteredBlogs[0].pageLink);
             } else if (filteredBlogs.length > 1) {
-                // If multiple results, navigate to the filter page with the search term as a query
                 navigate(`/filter?query=${searchTerm}`);
             }
         }
@@ -64,14 +65,17 @@ const Navbar = () => {
     };
 
     return (
-        <motion.nav className="bg-gray-900 text-white px-6 py-4 flex items-center justify-between shadow-lg"
-            initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            
+        <motion.nav 
+            className="bg-black text-white px-6 py-4 flex items-center justify-between shadow-lg fixed top-0 left-0 w-full z-50"
+            initial={{ opacity: 0, y: -10 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.5 }}
+        >
             {/* Logo */}
             <Link to="/" className="text-2xl font-bold">Weird Territory</Link>
 
             {/* Search Bar */}
-            <div ref={searchRef} className="relative w-72">
+            <div ref={searchRef} className="relative w-2/4">
                 <TextField
                     variant="outlined"
                     size="small"
@@ -104,17 +108,17 @@ const Navbar = () => {
                 {/* Search Results Dropdown */}
                 {filteredBlogs.length > 0 && (
                     <motion.div 
-                        className="absolute w-full bg-gray-800 text-white shadow-lg mt-1 rounded-lg p-2 max-h-60 overflow-y-auto z-50"
+                        className="absolute w-full h-auto bg-gray-800 text-white shadow-lg mt-1 rounded-lg p-2  overflow-y-auto z-50"
                         initial={{ opacity: 0, y: 5 }} 
                         animate={{ opacity: 1, y: 0 }} 
                         transition={{ duration: 0.3 }}
                     >
                         {filteredBlogs.map((blog) => (
                             <Link 
-                                to={blog.pageLink} // 🔥 Now it navigates using pageLink instead of ID
+                                to={blog.pageLink} 
                                 key={blog.id} 
                                 className="flex items-center gap-3 p-2 hover:bg-gray-700 rounded-lg"
-                                onClick={() => setFilteredBlogs([])} // Hide dropdown on click
+                                onClick={() => setFilteredBlogs([])}
                             >
                                 <img src={blog.img} alt={blog.title} className="w-12 h-12 object-cover rounded-lg" />
                                 <div>
@@ -129,6 +133,7 @@ const Navbar = () => {
 
             {/* Navigation Links */}
             <div className="hidden md:flex gap-6">
+            <Link to="/" className="hover:text-gray-400">Home</Link>
                 <Link to="/about" className="hover:text-gray-400">About</Link>
                 <Link to="/blogs" className="hover:text-gray-400">Blogs</Link>
                 <Link to="/contact" className="hover:text-gray-400">Contact</Link>

@@ -5,13 +5,12 @@ import { Link } from "react-router-dom";
 const Carousel = () => {
     const [blogs, setBlogs] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [progress, setProgress] = useState(0); // Track progress
+    const [progress, setProgress] = useState(0);
 
     useEffect(() => {
         fetch("/Blog.json")
             .then((response) => response.json())
             .then((data) => {
-                // Filter only blogs with carouselState: true
                 const carouselBlogs = data.filter(blog => blog.carouselState);
                 setBlogs(carouselBlogs);
             })
@@ -27,15 +26,14 @@ const Carousel = () => {
         return () => clearInterval(interval);
     }, [blogs]);
 
-    // Reset progress when currentIndex changes
     useEffect(() => {
-        setProgress(0); // Reset progress bar whenever the slide changes
+        setProgress(0); // Reset progress when currentIndex changes
     }, [currentIndex]);
 
     if (blogs.length === 0) return null;
 
     return (
-        <div className="relative w-full h-96 bg-black overflow-hidden rounded-lg">
+        <div className="relative w-full inline-flex h-2/3 md:h-[36rem] bg-black overflow-hidden rounded-lg">
             <AnimatePresence>
                 <motion.div
                     key={blogs[currentIndex]?.id}
@@ -73,15 +71,19 @@ const Carousel = () => {
             {/* Navigation Buttons */}
             <button
                 onClick={() => setCurrentIndex((currentIndex - 1 + blogs.length) % blogs.length)}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 p-2 rounded-full"
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-950 bg-opacity-50 p-2 rounded-full"
             >
-                ◀
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
+                </svg>
             </button>
             <button
                 onClick={() => setCurrentIndex((currentIndex + 1) % blogs.length)}
                 className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 p-2 rounded-full"
             >
-                ▶
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                </svg>
             </button>
 
             {/* Dot Indicators */}

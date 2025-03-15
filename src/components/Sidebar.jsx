@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Filter, List } from "lucide-react"; 
 
 const Sidebar = ({ onSelectTopic, selectedTopic }) => {
     const [topics, setTopics] = useState([]);
@@ -7,7 +8,6 @@ const Sidebar = ({ onSelectTopic, selectedTopic }) => {
         fetch("/Blog.json")
             .then((response) => response.json())
             .then((data) => {
-                // Extract unique topics
                 const uniqueTopics = [...new Set(data.map(blog => blog.topic))];
                 setTopics(uniqueTopics);
             })
@@ -15,21 +15,28 @@ const Sidebar = ({ onSelectTopic, selectedTopic }) => {
     }, []);
 
     return (
-        <div className="bg-gray-800 p-4 rounded-lg shadow-lg w-60">
-            <h2 className="text-lg font-bold text-white mb-3">Filter by Topic</h2>
+        <div className="bg-gray-900 p-4 rounded-lg shadow-lg w-60 fixed">
+            {/* Sidebar Header */}
+            <div className="flex items-center gap-2 mb-3">
+                <Filter size={20} className="text-rose-500" />
+                <h2 className="text-lg font-bold text-white">Filter by Topic</h2>
+            </div>
+
             <ul>
                 <li 
-                    className={`cursor-pointer p-2 rounded ${selectedTopic === null ? "bg-blue-500 text-white" : "text-gray-300 hover:bg-gray-700"}`}
+                    className={`cursor-pointer p-2 rounded flex items-center gap-2 ${selectedTopic === null ? "bg-rose-500 text-white" : "text-gray-300 hover:bg-gray-700"}`}
                     onClick={() => onSelectTopic(null)}
                 >
+                    <List size={16} />
                     Show All
                 </li>
                 {topics.map((topic, index) => (
                     <li
                         key={index}
-                        className={`cursor-pointer p-2 rounded ${selectedTopic === topic ? "bg-blue-500 text-white" : "text-gray-300 hover:bg-gray-700"}`}
+                        className={`cursor-pointer p-2 rounded flex items-center gap-2 ${selectedTopic === topic ? "bg-rose-500 text-white" : "text-gray-300 hover:bg-gray-700"}`}
                         onClick={() => onSelectTopic(topic)}
                     >
+                        <List size={16} />
                         {topic}
                     </li>
                 ))}

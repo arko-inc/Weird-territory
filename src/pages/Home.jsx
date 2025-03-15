@@ -4,7 +4,10 @@ import Landing from './Landing'
 const Home = () => {
   return (
     <>
-    <Landing/>
+   <div className=''>
+    
+   <Landing/>
+   </div>
     </>
   )
 }
