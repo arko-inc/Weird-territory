@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://weird-territory.vercel.app/</loc>
+    <lastmod>2025-03-15T01:53:03.373Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://weird-territory.vercel.app/blogs</loc>
+    <lastmod>2025-03-15T01:53:03.375Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://weird-territory.vercel.app/blogs/mars-colonization</loc>
+    <lastmod>2025-03-15T01:53:03.375Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://weird-territory.vercel.app/blogs/:pageLink</loc>
+    <lastmod>2025-03-15T01:53:03.375Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

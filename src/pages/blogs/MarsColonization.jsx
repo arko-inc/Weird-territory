@@ -1,12 +1,27 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
-import { Rocket,  Radiation, Home, Mountain, Timer, Snowflake, Users } from "lucide-react";
+import { Rocket, Radiation, Home, Mountain, Timer, Snowflake, Users } from "lucide-react";
+import { Helmet } from "react-helmet"; // Import react-helmet
 
 const MarsColonization = () => {
   return (
     <div className="bg-gray-900 text-white min-h-screen">
-      
+      {/* SEO using react-helmet */}
+      <Helmet>
+        <title>Mars Colonization - Exploring the Possibilities of Human Life Beyond Earth</title>
+        <meta name="description" content="Learn about the exciting possibilities of colonizing Mars and the technologies that can make human life beyond Earth a reality." />
+        <meta name="keywords" content="Mars, colonization, space exploration, human life on Mars, Mars base, Terraforming, travel to Mars" />
+        <meta property="og:title" content="Mars Colonization - Exploring the Possibilities of Human Life Beyond Earth" />
+        <meta property="og:description" content="Learn about the exciting possibilities of colonizing Mars and the technologies that can make human life beyond Earth a reality." />
+        <meta property="og:image" content="https://source.unsplash.com/1600x900/?mars,space" />
+        <meta property="og:url" content="https://weird-territory.vercel.app/mars-colonization" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Mars Colonization - Exploring the Possibilities of Human Life Beyond Earth" />
+        <meta name="twitter:description" content="Learn about the exciting possibilities of colonizing Mars and the technologies that can make human life beyond Earth a reality." />
+        <meta name="twitter:image" content="https://source.unsplash.com/1600x900/?mars,space" />
+      </Helmet>
+
       {/* Hero Section */}
       <section className="relative bg-cover bg-center h-[80vh] flex items-center justify-center text-white"
         style={{ backgroundImage: "url('https://source.unsplash.com/1600x900/?mars,space')" }}>
@@ -103,7 +118,6 @@ const MarsColonization = () => {
         </motion.h2>
         <p className="text-gray-300">The journey to Mars is just beginning, and humanity is ready for the challenge.</p>
       </section>
-
     </div>
   );
 };
