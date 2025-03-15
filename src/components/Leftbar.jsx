@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const RightSidebar = () => {
+const Leftbar = () => {
     const [topBlogs, setTopBlogs] = useState([]);
 
     useEffect(() => {
@@ -54,4 +54,4 @@ const RightSidebar = () => {
     );
 };
 
-export default RightSidebar;
+export default Leftbar;

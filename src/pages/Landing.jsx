@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import Carousel from "../components/Carousel";
 import Sidebar from "../components/Sidebar";
-import RightSidebar from "../components/Rightsidebar";
 import Story from "../components/Story";
+import Leftbar from "../components/Leftbar";
 
 const Landing = () => {
     const [blogs, setBlogs] = useState([]);
@@ -43,7 +42,7 @@ const Landing = () => {
                 {/* Left Column: Sidebar */}
                 <div className="md:col-span-2">
                    
-                    <RightSidebar />
+                    <Leftbar/>
                 </div>
 
                 {/* Middle Column: Carousel + Blogs */}
